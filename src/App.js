@@ -4,7 +4,7 @@ import Jobs from "./components/Jobs/Jobs";
 
 function App() {
   const [jobs, setJobs] = useState([])
-  const [searchTag, setSearchTag] = useState([])
+  const [searchKeyWord, setSearchKeyWord] = useState([])
   const [filteredJobs, setFilteredJobs] = useState(jobs)
 
   useEffect(() => {
@@ -15,35 +15,37 @@ function App() {
 
   useEffect(() => {
 
-    const searchResults = jobs.map((item) => [item.level, item.role, ...item.languages, ...item.tools])
+    const searchResults = jobs.map((job) => [job.level, job.role, ...job.languages, ...job.tools])
 
-    const union = searchResults.map((innerArray, index) => {
-      if (searchTag.every(element => innerArray.includes(element))) {
-        return index;
+    const union = searchResults.map((searchResult, i) => {
+
+      if (searchKeyWord.every(keyWord => searchResult.includes(keyWord))) {
+        return i;
       }
+
     }).filter(item => item !== undefined)
 
 
-    const filteredData = jobs.filter((object, index) => union.includes(index))
+    const filteredData = jobs.filter((jobs, i) => union.includes(i))
     setFilteredJobs(filteredData)
 
 
-  }, [jobs, searchTag])
+  }, [jobs, searchKeyWord])
 
 
   const handleTag = (e) => {
 
-    if (searchTag.some(x => x === e.target.innerHTML)) {
+    if (searchKeyWord.some(x => x === e.target.innerHTML)) {
       return
     }
-    else { setSearchTag([...searchTag, e.target.innerHTML]) }
+    else { setSearchKeyWord([...searchKeyWord, e.target.innerHTML]) }
 
   }
 
   const handleRemove = (keyWord) => {
 
-    const filteredSearch = searchTag.filter((x) => x !== keyWord)
-    setSearchTag(filteredSearch)
+    const filteredSearch = searchKeyWord.filter((x) => x !== keyWord)
+    setSearchKeyWord(filteredSearch)
 
   }
 
@@ -55,12 +57,12 @@ function App() {
 
       </div>
       {
-        searchTag.length > 0 &&
-        <div className="flex justify-between px-4 rounded shadow-lg shadow-[#d0f5f5] -mt-6 w-auto h-14 bg-white lg:w-[70%] mx-auto">
-          <div className="flex">
+        searchKeyWord.length > 0 &&
+        <div className="flex justify-between px-4 rounded shadow-lg shadow-[#d0f5f5] -mt-6 h-14 bg-white lg:w-[70%] md:w-[90%] w-[90%] mx-auto">
+          <div className="flex flex-wrap">
             {
-              searchTag.map(keyWord =>
-                <div className="bg-[#EFFAFA] rounded-sm flex h-[50%] my-auto gap-x-2 pl-2 ml-2">
+              searchKeyWord.map((keyWord, i) =>
+                <div key={i} className="bg-[#EFFAFA] rounded-sm flex h-[50%] my-auto gap-x-2 pl-2 ml-2">
                   <h4 className='text-[#5BA4A4] font-bold'>{keyWord}</h4>
                   <button
                     onClick={() => handleRemove(keyWord)}
@@ -71,11 +73,31 @@ function App() {
               )
             }
           </div>
-          <button onClick={() => setSearchTag([])} className="h-[50%] my-auto text-[#5BA4A4] font-bold font-sans hover:border-b-2 border-[#5BA4A4]">Clear</button>
+          <button onClick={() => setSearchKeyWord([])} className="h-[50%] my-auto text-[#5BA4A4] font-bold font-sans hover:border-b-2 border-[#5BA4A4]">Clear</button>
         </div>
       }
-      <div className="lg:w-[70%] mx-auto mt-14 pb-20">
+      <div className="lg:w-[70%] md:w-[90%] w-[90%] mx-auto mt-14 pb-20">
         <Jobs jobs={filteredJobs} handleTag={handleTag} />
+      </div>
+      <div>
+
+        <div className="flex gap-x-4 text-[#5BA4A4] justify-center pb-5">
+          <div>
+            <a href="https://www.facebook.com/khubaibulislamshakib.xx" target="_blank" rel="noreferrer">
+              <i className="fa-brands fa-square-facebook text-3xl hover:text-[#F16A8C] hover:rotate-[360deg] transition-all  duration-500"></i>
+            </a>
+          </div>
+          <div>
+            <a href="https://github.com/KIShakib" target="_blank" rel="noreferrer">
+              <i className="fa-brands fa-github  text-3xl hover:text-[#F16A8C] hover:rotate-[360deg] transition-all  duration-500"></i>
+            </a>
+          </div>
+          <div>
+            <a href="https://www.linkedin.com/in/ki-shakib/" target="_blank" rel="noreferrer">
+              <i className="fa-brands fa-linkedin text-3xl hover:text-[#F16A8C] hover:rotate-[360deg] transition-all  duration-500"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
