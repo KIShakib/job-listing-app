@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Job = ({ job }) => {
+const Job = ({ job, handleTag }) => {
     const { id, logo, tools, languages, location, contract, postedAt, level, role, position, featured, isNew, company } = job;
     return (
         <div className={`flex items-center justify-between bg-white py-5 px-10 shadow-lg shadow-[#d0f5f5] rounded font- ${featured && "border-l-[6px] border-[#5BA4A4]"}`}>
@@ -29,13 +29,13 @@ const Job = ({ job }) => {
                 </div>
             </div>
             <div className='flex gap-2 text-[#5BA4A4]'>
-                <h4 className='bg-[#EFFAFA] px-2 py-1 rounded hover:bg-[#5BA4A4] hover:text-[#EFFAFA] hover:cursor-pointer'>{role}</h4>
-                <h4 className='bg-[#EFFAFA] px-2 py-1 rounded hover:bg-[#5BA4A4] hover:text-[#EFFAFA] hover:cursor-pointer'>{level}</h4>
+                <button onClick={(e) => handleTag(e)} className='bg-[#EFFAFA] px-2 py-1 rounded hover:bg-[#5BA4A4] hover:text-[#EFFAFA] hover:cursor-pointer'>{role}</button>
+                <button onClick={(e) => handleTag(e)} className='bg-[#EFFAFA] px-2 py-1 rounded hover:bg-[#5BA4A4] hover:text-[#EFFAFA] hover:cursor-pointer'>{level}</button>
                 {
-                    languages?.map(language => <h4 className='bg-[#EFFAFA] px-2 py-1 rounded hover:bg-[#5BA4A4] hover:text-[#EFFAFA] hover:cursor-pointer'>{language}</h4>)
+                    languages?.map(language => <button onClick={(e) => handleTag(e)} className='bg-[#EFFAFA] px-2 py-1 rounded hover:bg-[#5BA4A4] hover:text-[#EFFAFA] hover:cursor-pointer'>{language}</button>)
                 }
                 {
-                    tools?.map(tool => <h4 className='bg-[#EFFAFA] px-2 py-1 rounded hover:bg-[#5BA4A4] hover:text-[#EFFAFA] hover:cursor-pointer'>{tool}</h4>)
+                    tools?.map(tool => <button onClick={(e) => handleTag(e)} className='bg-[#EFFAFA] px-2 py-1 rounded hover:bg-[#5BA4A4] hover:text-[#EFFAFA] hover:cursor-pointer'>{tool}</button>)
                 }
             </div>
         </div>
