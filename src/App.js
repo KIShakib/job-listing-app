@@ -62,7 +62,7 @@ function App() {
             {
               searchKeyWord.map((keyWord, i) =>
                 <div key={i} className="bg-[#EFFAFA] rounded-sm flex h-[50%] my-auto gap-x-2 pl-2 ml-2">
-                  <h4 className='text-[#5BA4A4] font-bold'>{keyWord}</h4>
+                  <h4 aria-hidden={true} className='text-[#5BA4A4] font-bold'>{keyWord}</h4>
                   <button
                     onClick={() => handleRemove(keyWord)}
                     className="bg-[#5BA4A4] hover:bg-[#2C3A3A] px-2 h-full text-white font-bold font-sans rounded-r-sm">
@@ -82,17 +82,17 @@ function App() {
 
         <div className="flex gap-x-4 text-[#5BA4A4] justify-center pb-5">
           <div>
-            <a href="https://www.facebook.com/khubaibulislamshakib.xx" target="_blank" rel="noreferrer">
+            <a href="https://www.facebook.com/khubaibulislamshakib.xx" aria-label="Facebook Profile" target="_blank" rel="noreferrer">
               <i className="fa-brands fa-square-facebook text-3xl hover:text-[#F16A8C] hover:rotate-[360deg] transition-all  duration-500"></i>
             </a>
           </div>
           <div>
-            <a href="https://github.com/KIShakib" target="_blank" rel="noreferrer">
+            <a href="https://github.com/KIShakib" aria-label="GitHub Profile" target="_blank" rel="noreferrer">
               <i className="fa-brands fa-github  text-3xl hover:text-[#F16A8C] hover:rotate-[360deg] transition-all  duration-500"></i>
             </a>
           </div>
           <div>
-            <a href="https://www.linkedin.com/in/ki-shakib/" target="_blank" rel="noreferrer">
+            <a href="https://www.linkedin.com/in/ki-shakib/" aria-label="Linkedin Profile" target="_blank" rel="noreferrer">
               <i className="fa-brands fa-linkedin text-3xl hover:text-[#F16A8C] hover:rotate-[360deg] transition-all  duration-500"></i>
             </a>
           </div>

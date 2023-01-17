@@ -10,21 +10,21 @@ const Job = ({ job, handleTag }) => {
                 </div>
                 <div className='flex flex-col gap-y-1'>
                     <div className='flex gap-x-4'>
-                        <h4 className='text-[#5BA4A4] text-lg'>{company}</h4>
+                        <h4 aria-hidden={true} className='text-[#5BA4A4] text-lg'>{company}</h4>
                         <div className='flex text-white gap-x-4'>
-                            <h4 className={`${isNew && "bg-[#5BA4A4] lg:px-[10px] px-2 py-[2px] rounded-xl"}`}>{isNew && "NEW!"}</h4>
-                            <h4 className={`${featured && "bg-[#2C3A3A] lg:px-[10px] py-[2px] px-2 rounded-xl"}`}>{featured && "FEATURED"}</h4>
+                            <h4 aria-hidden={true} className={`${isNew && "bg-[#5BA4A4] lg:px-[10px] px-2 py-[2px] rounded-xl"}`}>{isNew && "NEW!"}</h4>
+                            <h4 aria-hidden={true} className={`${featured && "bg-[#2C3A3A] lg:px-[10px] py-[2px] px-2 rounded-xl"}`}>{featured && "FEATURED"}</h4>
                         </div>
                     </div>
                     <div>
                         <h3 className='lg:text-2xl md:text-xl text-lg text-[#2C3A3A]'>{position}</h3>
                     </div>
                     <div className='flex lg:gap-x-4 md:gap-x-2 gap-x-1 items-center justify-start text-[#2C3A3A] text-opacity-50'>
-                        <h4>{postedAt}</h4>
+                        <h4 aria-hidden={true}>{postedAt}</h4>
                         <span className='text-xs'>🔘</span>
-                        <h4>{contract}</h4>
+                        <h4 aria-hidden={true}>{contract}</h4>
                         <span className='text-xs'>🔘</span>
-                        <h4>{location}</h4>
+                        <h4 aria-hidden={true}>{location}</h4>
                     </div>
                 </div>
             </div>
