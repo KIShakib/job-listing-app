@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import desktopHeader from "./assets/images/bg-header-desktop.svg";
 import Jobs from "./components/Jobs/Jobs";
 
 function App() {
@@ -53,7 +52,7 @@ function App() {
 
   return (
     <div className="bg-[#EFFAFA]">
-      <div className="h-[15vh] bg-no-repeat bg-cover bg-[#5BA4A4]" style={{ backgroundImage: `url(${desktopHeader})` }}>
+      <div className="h-[15vh] bg-no-repeat bg-cover bg-[#5BA4A4] lg:bg-[url('https://i.ibb.co/fMfCFbw/bg-header-desktop.png')] md:bg-[url('https://i.ibb.co/fMfCFbw/bg-header-desktop.png')] sm:bg-[url('https://i.ibb.co/VSG8DPx/bg-header-mobile.png')] bg-[url('https://i.ibb.co/VSG8DPx/bg-header-mobile.png')]">
 
       </div>
       {
@@ -76,7 +75,7 @@ function App() {
           <button onClick={() => setSearchKeyWord([])} className="h-[50%] my-auto text-[#5BA4A4] font-bold font-sans hover:border-b-2 border-[#5BA4A4]">Clear</button>
         </div>
       }
-      <div className="lg:w-[70%] md:w-[90%] w-[90%] mx-auto mt-14 pb-20">
+      <div className="lg:w-[70%] md:w-[90%] w-[90%] mx-auto mt-14 pb-20 min-h-[500px] bg-[#EFFAFA]">
         <Jobs jobs={filteredJobs} handleTag={handleTag} />
       </div>
       <div>
